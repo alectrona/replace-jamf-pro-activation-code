@@ -1,0 +1,13 @@
+image: atlassian/default-image:3
+
+pipelines:
+  default:
+    - parallel:
+      - step:
+          name: 'Replace Jamf Pro Activation Code at Server 1'
+          script:
+            - bash scripts/replace-jamf-pro-activation-code.sh "$JSS1_API_PASS" "https://YOUR_SERVER_1.jamfcloud.com"
+      - step:
+          name: 'Replace Jamf Pro Activation Code at Server 2'
+          script:
+            - bash scripts/replace-jamf-pro-activation-code.sh "$JSS2_API_PASS" "https://YOUR_SERVER_2.jamfcloud.com"
